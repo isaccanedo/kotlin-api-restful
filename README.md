@@ -267,18 +267,4 @@ server:
 - [ ] Docker e Docker Compose
 - [ ] CI/CD com GitHub Actions
 
-## 📄 Licença
-
-Este projeto está sob a licença MIT. Veja o arquivo [LICENSE](LICENSE) para mais detalhes.
-
-## 👤 Autor
-
-Desenvolvido com ❤️ por **Seu Nome**
-
-- GitHub: [@seu-usuario](https://github.com/seu-usuario)
-- LinkedIn: [seu-perfil](https://linkedin.com/in/seu-perfil)
-- Email: seu.email@exemplo.com
-
----
-
 ⭐ Se este projeto te ajudou, considere dar uma estrela!

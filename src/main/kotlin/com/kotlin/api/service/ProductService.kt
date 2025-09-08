@@ -4,6 +4,7 @@ import com.kotlin.api.dto.ProductRequestDto
 import com.kotlin.api.dto.ProductResponseDto
 import com.kotlin.api.dto.ProductUpdateDto
 import com.kotlin.api.entity.Category
+import com.kotlin.api.entity.Product
 import com.kotlin.api.exception.ProductNotFoundException
 import com.kotlin.api.mapper.ProductMapper
 import com.kotlin.api.repository.ProductRepository
@@ -72,17 +73,16 @@ class ProductService(
         val existingProduct = productRepository.findById(id)
             .orElseThrow { ProductNotFoundException("Produto com ID $id não encontrado") }
 
-        val updatedProduct = existingProduct.copy(
-            name = updateDto.name ?: existingProduct.name,
-            description = updateDto.description ?: existingProduct.description,
-            price = updateDto.price ?: existingProduct.price,
-            stock = updateDto.stock ?: existingProduct.stock,
-            category = updateDto.category ?: existingProduct.category,
-            active = updateDto.active ?: existingProduct.active,
-            updatedAt = LocalDateTime.now()
-        )
+        // Atualiza apenas os campos fornecidos
+        updateDto.name?.let { existingProduct.name = it }
+        updateDto.description?.let { existingProduct.description = it }
+        updateDto.price?.let { existingProduct.price = it }
+        updateDto.stock?.let { existingProduct.stock = it }
+        updateDto.category?.let { existingProduct.category = it }
+        updateDto.active?.let { existingProduct.active = it }
+        existingProduct.updatedAt = LocalDateTime.now()
 
-        val savedProduct = productRepository.save(updatedProduct)
+        val savedProduct = productRepository.save(existingProduct)
         return productMapper.toDto(savedProduct)
     }
 
@@ -94,14 +94,14 @@ class ProductService(
     }
 
     fun deactivateProduct(id: Long): ProductResponseDto {
-        return updateProduct(id, ProductUpdateDto(
-            name = null,
-            description = null,
-            price = null,
-            stock = null,
-            category = null,
-            active = false
-        ))
+        val existingProduct = productRepository.findById(id)
+            .orElseThrow { ProductNotFoundException("Produto com ID $id não encontrado") }
+
+        existingProduct.active = false
+        existingProduct.updatedAt = LocalDateTime.now()
+
+        val savedProduct = productRepository.save(existingProduct)
+        return productMapper.toDto(savedProduct)
     }
 
     @Transactional(readOnly = true)

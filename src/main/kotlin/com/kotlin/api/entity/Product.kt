@@ -8,39 +8,66 @@ import java.time.LocalDateTime
 
 @Entity
 @Table(name = "products")
-data class Product(
+class Product(
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    val id: Long = 0,
+    var id: Long = 0,
 
     @field:NotBlank(message = "Nome é obrigatório")
     @Column(nullable = false, length = 100)
-    val name: String,
+    var name: String,
 
     @Column(length = 500)
-    val description: String? = null,
+    var description: String? = null,
 
     @field:Positive(message = "Preço deve ser positivo")
     @Column(nullable = false, precision = 10, scale = 2)
-    val price: BigDecimal,
+    var price: BigDecimal,
 
     @field:Positive(message = "Estoque deve ser positivo")
     @Column(nullable = false)
-    val stock: Int,
+    var stock: Int,
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
-    val category: Category,
+    var category: Category,
 
     @Column(nullable = false)
-    val active: Boolean = true,
+    var active: Boolean = true,
 
     @Column(name = "created_at", nullable = false)
-    val createdAt: LocalDateTime = LocalDateTime.now(),
+    var createdAt: LocalDateTime = LocalDateTime.now(),
 
     @Column(name = "updated_at", nullable = false)
-    val updatedAt: LocalDateTime = LocalDateTime.now()
-)
+    var updatedAt: LocalDateTime = LocalDateTime.now()
+) {
+    // Construtor sem parâmetros para JPA
+    constructor() : this(
+        id = 0,
+        name = "",
+        description = null,
+        price = BigDecimal.ZERO,
+        stock = 0,
+        category = Category.OTHER,
+        active = true,
+        createdAt = LocalDateTime.now(),
+        updatedAt = LocalDateTime.now()
+    )
+
+    override fun equals(other: Any?): Boolean {
+        if (this === other) return true
+        if (other !is Product) return false
+        return id == other.id
+    }
+
+    override fun hashCode(): Int {
+        return id.hashCode()
+    }
+
+    override fun toString(): String {
+        return "Product(id=$id, name='$name', price=$price, stock=$stock, category=$category, active=$active)"
+    }
+}
 
 enum class Category {
     ELECTRONICS, CLOTHING, FOOD, BOOKS, HOME, SPORTS, OTHER

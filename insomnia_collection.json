@@ -1,0 +1,437 @@
+{
+  "_type": "export",
+  "__export_format": 4,
+  "__export_date": "2025-09-07T21:20:00.000Z",
+  "__export_source": "insomnia.desktop.app:v2023.5.8",
+  "resources": [
+    {
+      "_id": "req_create_product",
+      "parentId": "fld_products",
+      "modified": 1694116800000,
+      "created": 1694116800000,
+      "url": "{{ _.base_url }}/api/v1/products",
+      "name": "Create Product",
+      "description": "Criar um novo produto",
+      "method": "POST",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"name\": \"Smartphone Samsung Galaxy S23\",\n  \"description\": \"Smartphone Android com 256GB de armazenamento\",\n  \"price\": 2500.99,\n  \"stock\": 50,\n  \"category\": \"ELECTRONICS\",\n  \"active\": true\n}"
+      },
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json",
+          "id": "pair_content_type"
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1694116800000,
+      "_type": "request"
+    },
+    {
+      "_id": "req_get_all_products",
+      "parentId": "fld_products",
+      "modified": 1694116800000,
+      "created": 1694116800000,
+      "url": "{{ _.base_url }}/api/v1/products",
+      "name": "Get All Products",
+      "description": "Listar todos os produtos com paginação",
+      "method": "GET",
+      "body": {},
+      "parameters": [
+        {
+          "name": "page",
+          "value": "0",
+          "description": "Número da página (começa em 0)",
+          "id": "pair_page"
+        },
+        {
+          "name": "size",
+          "value": "10",
+          "description": "Quantidade de itens por página",
+          "id": "pair_size"
+        },
+        {
+          "name": "sort",
+          "value": "name,asc",
+          "description": "Ordenação (campo,direção)",
+          "id": "pair_sort"
+        },
+        {
+          "name": "activeOnly",
+          "value": "true",
+          "description": "Filtrar apenas produtos ativos",
+          "id": "pair_active_only"
+        }
+      ],
+      "headers": [],
+      "authentication": {},
+      "metaSortKey": -1694116700000,
+      "_type": "request"
+    },
+    {
+      "_id": "req_get_product_by_id",
+      "parentId": "fld_products",
+      "modified": 1694116800000,
+      "created": 1694116800000,
+      "url": "{{ _.base_url }}/api/v1/products/1",
+      "name": "Get Product by ID",
+      "description": "Buscar produto por ID",
+      "method": "GET",
+      "body": {},
+      "parameters": [],
+      "headers": [],
+      "authentication": {},
+      "metaSortKey": -1694116600000,
+      "_type": "request"
+    },
+    {
+      "_id": "req_update_product",
+      "parentId": "fld_products",
+      "modified": 1694116800000,
+      "created": 1694116800000,
+      "url": "{{ _.base_url }}/api/v1/products/1",
+      "name": "Update Product",
+      "description": "Atualizar um produto existente",
+      "method": "PUT",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"name\": \"Smartphone Samsung Galaxy S23 Ultra\",\n  \"description\": \"Smartphone Android premium com 512GB\",\n  \"price\": 3200.99,\n  \"stock\": 30,\n  \"category\": \"ELECTRONICS\",\n  \"active\": true\n}"
+      },
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json",
+          "id": "pair_content_type"
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1694116500000,
+      "_type": "request"
+    },
+    {
+      "_id": "req_partial_update_product",
+      "parentId": "fld_products",
+      "modified": 1694116800000,
+      "created": 1694116800000,
+      "url": "{{ _.base_url }}/api/v1/products/1",
+      "name": "Partial Update Product",
+      "description": "Atualização parcial de um produto",
+      "method": "PUT",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"price\": 2800.99,\n  \"stock\": 45\n}"
+      },
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json",
+          "id": "pair_content_type"
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1694116450000,
+      "_type": "request"
+    },
+    {
+      "_id": "req_deactivate_product",
+      "parentId": "fld_products",
+      "modified": 1694116800000,
+      "created": 1694116800000,
+      "url": "{{ _.base_url }}/api/v1/products/1/deactivate",
+      "name": "Deactivate Product",
+      "description": "Desativar um produto",
+      "method": "PATCH",
+      "body": {},
+      "parameters": [],
+      "headers": [],
+      "authentication": {},
+      "metaSortKey": -1694116400000,
+      "_type": "request"
+    },
+    {
+      "_id": "req_delete_product",
+      "parentId": "fld_products",
+      "modified": 1694116800000,
+      "created": 1694116800000,
+      "url": "{{ _.base_url }}/api/v1/products/1",
+      "name": "Delete Product",
+      "description": "Deletar um produto permanentemente",
+      "method": "DELETE",
+      "body": {},
+      "parameters": [],
+      "headers": [],
+      "authentication": {},
+      "metaSortKey": -1694116300000,
+      "_type": "request"
+    },
+    {
+      "_id": "req_search_by_category",
+      "parentId": "fld_search",
+      "modified": 1694116800000,
+      "created": 1694116800000,
+      "url": "{{ _.base_url }}/api/v1/products/category/ELECTRONICS",
+      "name": "Search by Category",
+      "description": "Buscar produtos por categoria",
+      "method": "GET",
+      "body": {},
+      "parameters": [
+        {
+          "name": "page",
+          "value": "0",
+          "id": "pair_page"
+        },
+        {
+          "name": "size",
+          "value": "10",
+          "id": "pair_size"
+        }
+      ],
+      "headers": [],
+      "authentication": {},
+      "metaSortKey": -1694116200000,
+      "_type": "request"
+    },
+    {
+      "_id": "req_search_by_name",
+      "parentId": "fld_search",
+      "modified": 1694116800000,
+      "created": 1694116800000,
+      "url": "{{ _.base_url }}/api/v1/products/search",
+      "name": "Search by Name",
+      "description": "Buscar produtos por nome",
+      "method": "GET",
+      "body": {},
+      "parameters": [
+        {
+          "name": "name",
+          "value": "Samsung",
+          "description": "Nome ou parte do nome do produto",
+          "id": "pair_name"
+        },
+        {
+          "name": "page",
+          "value": "0",
+          "id": "pair_page"
+        },
+        {
+          "name": "size",
+          "value": "10",
+          "id": "pair_size"
+        }
+      ],
+      "headers": [],
+      "authentication": {},
+      "metaSortKey": -1694116100000,
+      "_type": "request"
+    },
+    {
+      "_id": "req_search_by_price_range",
+      "parentId": "fld_search",
+      "modified": 1694116800000,
+      "created": 1694116800000,
+      "url": "{{ _.base_url }}/api/v1/products/price-range",
+      "name": "Search by Price Range",
+      "description": "Buscar produtos por faixa de preço",
+      "method": "GET",
+      "body": {},
+      "parameters": [
+        {
+          "name": "minPrice",
+          "value": "1000.00",
+          "description": "Preço mínimo",
+          "id": "pair_min_price"
+        },
+        {
+          "name": "maxPrice",
+          "value": "5000.00",
+          "description": "Preço máximo",
+          "id": "pair_max_price"
+        },
+        {
+          "name": "page",
+          "value": "0",
+          "id": "pair_page"
+        },
+        {
+          "name": "size",
+          "value": "10",
+          "id": "pair_size"
+        }
+      ],
+      "headers": [],
+      "authentication": {},
+      "metaSortKey": -1694116000000,
+      "_type": "request"
+    },
+    {
+      "_id": "req_get_stats",
+      "parentId": "fld_analytics",
+      "modified": 1694116800000,
+      "created": 1694116800000,
+      "url": "{{ _.base_url }}/api/v1/products/stats",
+      "name": "Get Product Statistics",
+      "description": "Obter estatísticas dos produtos",
+      "method": "GET",
+      "body": {},
+      "parameters": [],
+      "headers": [],
+      "authentication": {},
+      "metaSortKey": -1694115900000,
+      "_type": "request"
+    },
+    {
+      "_id": "req_bulk_create",
+      "parentId": "fld_bulk",
+      "modified": 1694116800000,
+      "created": 1694116800000,
+      "url": "{{ _.base_url }}/api/v1/products",
+      "name": "Bulk Create - Electronics",
+      "description": "Criar vários produtos eletrônicos de uma vez",
+      "method": "POST",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"name\": \"iPhone 15 Pro\",\n  \"description\": \"iPhone com chip A17 Pro e câmera de 48MP\",\n  \"price\": 7999.99,\n  \"stock\": 25,\n  \"category\": \"ELECTRONICS\",\n  \"active\": true\n}"
+      },
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json",
+          "id": "pair_content_type"
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1694115800000,
+      "_type": "request"
+    },
+    {
+      "_id": "req_bulk_create_clothing",
+      "parentId": "fld_bulk",
+      "modified": 1694116800000,
+      "created": 1694116800000,
+      "url": "{{ _.base_url }}/api/v1/products",
+      "name": "Bulk Create - Clothing",
+      "description": "Criar produto de vestuário",
+      "method": "POST",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"name\": \"Camiseta Nike Dri-Fit\",\n  \"description\": \"Camiseta esportiva com tecnologia Dri-Fit\",\n  \"price\": 129.99,\n  \"stock\": 100,\n  \"category\": \"CLOTHING\",\n  \"active\": true\n}"
+      },
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json",
+          "id": "pair_content_type"
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1694115700000,
+      "_type": "request"
+    },
+    {
+      "_id": "req_bulk_create_books",
+      "parentId": "fld_bulk",
+      "modified": 1694116800000,
+      "created": 1694116800000,
+      "url": "{{ _.base_url }}/api/v1/products",
+      "name": "Bulk Create - Books",
+      "description": "Criar produto livro",
+      "method": "POST",
+      "body": {
+        "mimeType": "application/json",
+        "text": "{\n  \"name\": \"Clean Code - Robert Martin\",\n  \"description\": \"Livro sobre boas práticas de programação\",\n  \"price\": 89.90,\n  \"stock\": 200,\n  \"category\": \"BOOKS\",\n  \"active\": true\n}"
+      },
+      "parameters": [],
+      "headers": [
+        {
+          "name": "Content-Type",
+          "value": "application/json",
+          "id": "pair_content_type"
+        }
+      ],
+      "authentication": {},
+      "metaSortKey": -1694115600000,
+      "_type": "request"
+    },
+    {
+      "_id": "fld_products",
+      "parentId": "wrk_products_api",
+      "modified": 1694116800000,
+      "created": 1694116800000,
+      "name": "Products CRUD",
+      "description": "Operações básicas de CRUD para produtos",
+      "environment": {},
+      "environmentPropertyOrder": null,
+      "metaSortKey": -1694116800000,
+      "_type": "request_group"
+    },
+    {
+      "_id": "fld_search",
+      "parentId": "wrk_products_api",
+      "modified": 1694116800000,
+      "created": 1694116800000,
+      "name": "Search & Filters",
+      "description": "Endpoints para busca e filtros avançados",
+      "environment": {},
+      "environmentPropertyOrder": null,
+      "metaSortKey": -1694116700000,
+      "_type": "request_group"
+    },
+    {
+      "_id": "fld_analytics",
+      "parentId": "wrk_products_api",
+      "modified": 1694116800000,
+      "created": 1694116800000,
+      "name": "Analytics",
+      "description": "Endpoints para estatísticas e relatórios",
+      "environment": {},
+      "environmentPropertyOrder": null,
+      "metaSortKey": -1694116600000,
+      "_type": "request_group"
+    },
+    {
+      "_id": "fld_bulk",
+      "parentId": "wrk_products_api",
+      "modified": 1694116800000,
+      "created": 1694116800000,
+      "name": "Bulk Operations",
+      "description": "Operações para criação em lote de produtos de exemplo",
+      "environment": {},
+      "environmentPropertyOrder": null,
+      "metaSortKey": -1694116500000,
+      "_type": "request_group"
+    },
+    {
+      "_id": "wrk_products_api",
+      "parentId": null,
+      "modified": 1694116800000,
+      "created": 1694116800000,
+      "name": "Products API - Spring Boot Kotlin",
+      "description": "Collection completa para testar a API de produtos desenvolvida em Spring Boot com Kotlin",
+      "scope": "collection",
+      "_type": "workspace"
+    },
+    {
+      "_id": "env_base",
+      "parentId": "wrk_products_api",
+      "modified": 1694116800000,
+      "created": 1694116800000,
+      "name": "Base Environment",
+      "data": {
+        "base_url": "http://localhost:8080"
+      },
+      "dataPropertyOrder": {
+        "&": ["base_url"]
+      },
+      "color": null,
+      "isPrivate": false,
+      "metaSortKey": 1694116800000,
+      "_type": "environment"
+    }
+  ]
+}
